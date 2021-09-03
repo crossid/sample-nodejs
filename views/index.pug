@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  if req.oidc.user
+    p Hello #{req.oidc.user.name}, 
+      a(href="/whoami" class="text-blue-700") view your session 
+      span or 
+      a(href="/logout" class='text-blue-700') signout.
+  else
+    p Hello visitor, 
+     a(href="/login" class="text-blue-700") sign in 
+     span to see more.

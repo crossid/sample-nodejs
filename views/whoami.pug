@@ -1,0 +1,13 @@
+extends layout
+block content
+  if req.oidc.user
+    h2(class='text-2xl font-normal text-gray-900 pb-8') Hello #{req.oidc.user.name}
+    div(class='w-1/2')
+      ul(class='divide-y-2 divide-gray-100')
+        each v, k in userInfo
+          li(class='flex justify-between p-3 hover:bg-gray-50')
+            h3(class='text-sm font-medium')=k
+            p(class='text-sm text-gray-500')=v
+  else
+    h2 Hello visitor, please&nbsp
+      a(href='/login' class='text-blue-900') login

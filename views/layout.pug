@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    link(rel="stylesheet" type="text/css" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css")
+    title= title
+  body
+    div(class='min-h-screen bg-white')
+      nav(class='bg-white border-b border-gray-200')
+        div(class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8')
+          div(class='flex justify-between h-16')
+            //- top menu
+            div(class='flex')
+              //- logo
+              div(class='flex-shrink-0 flex items-center')
+                a(href='https://crossid.io' target='_blank')
+                  img(class='block lg:hidden h-8 w-auto' src='https://crossid.io/android-chrome-192x192.png' alt="Logo")
+                  img(class='hidden lg:block h-8 w-auto' src='https://crossid.io/logo.png' alt=Logo)
+              //- options
+              div(class='hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8')
+                a(class='text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium' class=(req.path === '/' ? 'border-blue-500' : 'border-none') href="/" aria-current='page') Home
+                a(class='text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium' class=(req.path === '/whoami' ? 'border-blue-500' : 'border-none') href="/whoami" aria-current='page') Who AM I?
+            div(class='flex')
+              div(class='flex-shrink-0 flex items-center space-x-2')
+                a(class='inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' class=(req.oidc.user && 'hidden') aria-current='page' href="/login") Sign In
+                a(class='inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' class=(!req.oidc.user && 'hidden') aria-current='page' href="/logout") Sign Out
+      div(class='py-10')
+        header
+          div(class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8')
+            h1(class='text-3xl font-bold leading-tight text-gray-900')=title
+        main
+          div(class='max-w-7xl mx-auto sm:px-6 lg:px-8')
+            div(class='px-4 py-8 sm:px-0')
+              block content
+        footer(class='bg-white')
+          div(class='max-w-7xl mx-auto py-48 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8')
+            div(class='mt-8 md:mt-0 md:order-1')
+              p(class='text-center text-base text-gray-400') Don't have a Crossid tenant?
+                a(href='https://crossid.io/signup' class='text-blue-700' target='_blank')  register
+                span  for free.

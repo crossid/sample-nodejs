@@ -1,0 +1,21 @@
+name: sample-nodejs
+services:
+  - name: sample-nodejs
+    environment_slug: node-js
+    github:
+      branch: main
+      deploy_on_push: true
+      repo: asaf/sample-nodejs
+    envs:
+      - key: SECRET
+        value: 'change_me_to_random_secret'
+        type: SECRET
+      - key: BASE_URL
+        value: ${APP_URL}
+      - key: ISSUER_BASE_URL
+        value: 'https://<tenant>.crossid.io/oauth2'
+      - key: CLIENT_ID
+        value: '<client_id>'
+      - key: CLIENT_SECRET
+        value: '<client_secret>'
+        type: SECRET

@@ -16,7 +16,6 @@ app.use(
     // idpLogout: true,
     authorizationParams: {
       response_type: 'code id_token',
-      audience: 'mynodeapp',
       scope: 'openid profile email',
     },
   })

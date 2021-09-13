@@ -12,5 +12,6 @@ SECRET=anyRandomSecret \
 BASE_URL=https://localhost \
 ISSUER_BASE_URL=https://<tenant>.crossid.io/oauth2 \
 CLIENT_ID=<client_id> \
-CLIENT_SECRET=<client_secret>
+CLIENT_SECRET=<client_secret> \
+npm start
 ```
